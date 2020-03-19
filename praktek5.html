@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <script src="vue/vue.js"></script>
+    <style>
+        .header {
+            height: 50px;
+            width: 100%;
+            background-color: aqua;
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding: 5px;
+        }
+
+        .header h1 {
+            font-size: large;
+            font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+            color: black;
+            margin-left: 20px;
+        }
+
+        .mainproduct {
+            margin-top: 50px;
+            width: 70%;
+            height: 100%;
+            float: left;
+        }
+
+        .cart {
+            margin-top: 50px;
+            width: 30%;
+            height: 100%;
+            float: left;
+        }
+
+        .listproduk {
+            width: 150px;
+            height: 200px;
+            float: left;
+            margin: 5px 5px;
+            box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .thumbnail {
+            width: 100%;
+            height: 50%;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th,
+        td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        /* Modal Content */
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        /* The Close Button */
+        .close {
+            color: #aaaaaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <h1>Vokasi Store</h1>
+    </div>
+    <div id="container" class="container">
+        <div class="mainproduct">
+            <h3>Aye Aye Captain</h3>
+            <hr />
+            <div class="listproduk" v-for="motorku in motor">
+                <br />
+                <div class="thumbnail">
+                    <img v-bind:src="motorku.image" width="125px" height="100px" />
+                </div>
+                <br />
+                {{motorku.merek}}
+                <br />
+                Harga : {{motorku.harga}}
+                <button v-on:click="addCart(motorku.image, motorku.merek, motorku.harga)" type="button">
+                    Beli
+                </button>
+            </div>
+        </div>
+        <div class="cart">
+            <h3>Keranjang Belanja</h3>
+            <hr />
+            <table>
+                <tr v-for="(image, index) in keranjangimage">
+                    <td><img v-bind:src="image" width="150px" height="150px" /></td>
+                    <td>
+                        <button v-on:click="removeCart(index)" type="button">X</button>
+                    </td>
+                </tr>
+                <tr v-for="merek in keranjangmerek">
+                    <td>{{merek}}</td>
+                </tr>
+                <tr v-for="harga in keranjangharga">
+                    <td>Rp. {{harga}},-</td>
+                </tr>
+                <h3>Total Belanja :</h3>
+                <h3>Rp {{total}}</h3>
+            </table>
+            <h3 v-if="qty >= 4">Whoa Borong nih ye></h3>
+            <h3 v-else-if="qty>=2">Beli lagi biar dapat bonus</h3>
+            <h3 v-else>Selamat Belanja!</h3>
+            <h4>{{qty}}</h4>
+            <br />
+            <br />
+        </div>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: "#container",
+            data: {
+                motor: [{
+                        merek: "Supra",
+                        harga: 5500000,
+                        image: "https://cdn0-production-images-kly.akamaized.net/QbYVo9CS2CJxhhhFQJMnDmLQ4q4=/640x360/smart/filters:quality(75):strip_icc():format(jpeg)/kly-media-production/medias/2747152/original/088219600_1552155797-AHM_Honda_Supra_X_125_FI._06_.jpg"
+                    },
+                    {
+                        merek: "Mio",
+                        harga: 3400000,
+                        image: "https://d2pa5gi5n2e1an.cloudfront.net/global/images/product/motorcycle/Yamaha_Mio/Yamaha_Mio_L_1.jpg"
+                    },
+                    {
+                        merek: "NMax",
+                        harga: 2500000,
+                        image: "https://d2pa5gi5n2e1an.cloudfront.net/global/images/product/motorcycle/Yamaha_NMAX_2018/Yamaha_NMAX_2018_L_1.jpg"
+                    },
+                    {
+                        merek: "Shogun",
+                        harga: 3400000,
+                        image: "https://d2pa5gi5n2e1an.cloudfront.net/webp/global/images/product/motorcycle/Suzuki_Shogun_Axelo125/Suzuki_Shogun_Axelo125_L_1.jpg"
+                    },
+                    {
+                        merek: "Satria",
+                        harga: 1400000,
+                        image: "https://www.suzuki.co.id//assets/static/img/variant/Satria-WhiteBlue.png"
+                    }
+                ],
+                keranjangimage: [],
+                keranjangmerek: [],
+                keranjangharga: [],
+                qty: 0
+            },
+            computed: {
+                total() {
+                    return this.keranjangharga.reduce(function (sum, item) {
+                        return sum + item;
+                    }, 0);
+                }
+            },
+            methods: {
+                addCart: function (image, merek, harga) {
+                    this.keranjangimage.push(image);
+                    this.keranjangmerek.push(merek);
+                    this.keranjangharga.push(harga);
+                    this.qty += 1;
+                },
+                removeCart: function (index) {
+                    this.keranjangimage.splice(index, 1);
+                    this.keranjangmerek.splice(index, 1);
+                    this.keranjangharga.splice(index, 1);
+                    this.qty -= 1;
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

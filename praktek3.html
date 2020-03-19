@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .sidepanel {
+            width: 200px;
+            height: 100%;
+            background-color: rebeccapurple;
+            position: fixed;
+            top: 0;
+            left: 0;
+            transition: width 1s;
+        }
+
+        .main {
+            background-color: seashell;
+            margin-left: 200px;
+        }
+
+        .sidepanelclose {
+            height: 100%;
+            width: 0px;
+            background-color: rebeccapurple;
+            position: fixed;
+            overflow: auto;
+            top: 0;
+            left: 0;
+        }
+
+        .sidepanel span {
+            float: right;
+        }
+
+        .mainclose {
+            background-color: seashell;
+            margin-left: 0px;
+        }
+    </style>
+    <script>
+        function openNav() {
+            document.getElementById("panelkiri").className = "sidepanel";
+            document.getElementById("panelutama").className = "main"
+        }
+
+        function closeNav() {
+            document.getElementById("panelkiri").className = "sidepanelclose";
+            document.getElementById("panelutama").className = "mainclose";
+        }
+    </script>
+</head>
+
+<body>
+    <div id="panelkiri" class="sidepanelclose">
+        <span style="font-size: 30px; cursor: pointer;" onclick="closeNav()">X</span>
+        <ul>
+            <li>
+                <ul>Home</ul>
+            </li>
+            <li>
+                <ul>Profil</ul>
+            </li>
+            <li>
+                <ul>Contact us</ul>
+            </li>
+        </ul>
+    </div>
+    <div id="panelutama" class="main">
+        <span style="font-size: 30px; cursor: pointer;" onclick="openNav()">&#9776;</span>
+        <H1>Ini Konten Utamanya</H1>
+    </div>
+</body>
+
+</html>

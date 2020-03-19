@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        .container {
+            border: 1px solid black;
+            width: 800px;
+            height: 1000px;
+            margin: 50px auto;
+            position: relative;
+        }
+
+        .ribbon {
+            width: 100px;
+            height: 100px;
+            left: 700px;
+            top: 0px;
+            background-image: url("img/twt.png");
+            background-size: cover;
+            position: absolute;
+        }
+
+        .judul {
+            border: 1px solid black;
+            width: 800px;
+            height: 100px;
+            padding-left: 20px;
+            padding-top: 10px;
+            box-sizing: border-box;
+        }
+
+        .layarkaca {
+            background-color: black;
+            width: 200px;
+            height: 40px;
+            opacity: 0.3;
+            top: 30px;
+            left: 10px;
+            position: absolute;
+        }
+
+        .menu {
+            border: 1px solid black;
+            width: 800px;
+            height: 40px;
+            padding-left: 20px;
+            padding-top: 10px;
+            box-sizing: border-box;
+        }
+
+        .banner {
+            border: 1px solid black;
+            width: 800px;
+            height: 100px;
+            padding: 10px 10px 10px 10px;
+            box-sizing: border-box;
+
+            background-image: url("img/qq.jpg");
+            background-size: cover;
+        }
+
+        /* .banner img{
+        width: 600px;
+        height: 80px;
+        
+        } */
+        .judulartikel {
+            border: 1px solid black;
+            width: 800px;
+            height: 100px;
+            padding-left: 20px;
+            background-color: aquamarine;
+            box-sizing: border-box;
+        }
+
+        .konten {
+            width: 800px;
+            height: 400px;
+            padding: 10px 10px 10px 10px;
+            overflow: auto;
+            box-sizing: border-box;
+        }
+
+        .konten img {
+            float: left;
+            padding-right: 15px;
+        }
+
+        .galery {
+            background-color: blue;
+            width: 190px;
+            height: 100px;
+            margin: 5px 5px 5px 5px;
+            float: left;
+            background-image: url("img/tt.jpg");
+            background-size: cover;
+        }
+
+        .footer {
+            padding-top: 20px;
+            text-align: center;
+        }
+
+        /* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+        html,
+        body,
+        div,
+        span,
+        applet,
+        object,
+        iframe,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p,
+        blockquote,
+        pre,
+        a,
+        abbr,
+        acronym,
+        address,
+        big,
+        cite,
+        code,
+        del,
+        dfn,
+        em,
+        img,
+        ins,
+        kbd,
+        q,
+        s,
+        samp,
+        small,
+        strike,
+        strong,
+        sub,
+        sup,
+        tt,
+        var,
+        b,
+        u,
+        i,
+        center,
+        dl,
+        dt,
+        dd,
+        ol,
+        ul,
+        li,
+        fieldset,
+        form,
+        label,
+        legend,
+        table,
+        caption,
+        tbody,
+        tfoot,
+        thead,
+        tr,
+        th,
+        td,
+        article,
+        aside,
+        canvas,
+        details,
+        embed,
+        figure,
+        figcaption,
+        footer,
+        header,
+        hgroup,
+        menu,
+        nav,
+        output,
+        ruby,
+        section,
+        summary,
+        time,
+        mark,
+        audio,
+        video {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            font-size: 100%;
+            font: inherit;
+            vertical-align: baseline;
+        }
+
+        /* HTML5 display-role reset for older browsers */
+        article,
+        aside,
+        details,
+        figcaption,
+        figure,
+        footer,
+        header,
+        hgroup,
+        menu,
+        nav,
+        section {
+            display: block;
+        }
+
+        body {
+            line-height: 1;
+        }
+
+        ol,
+        ul {
+            list-style: none;
+        }
+
+        blockquote,
+        q {
+            quotes: none;
+        }
+
+        blockquote:before,
+        blockquote:after,
+        q:before,
+        q:after {
+            content: '';
+            content: none;
+        }
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+
+        .mode {
+            border: 1px black solid;
+            width: 200px;
+            height: 150px;
+            left: 1100px;
+            top: 10px;
+            background-color: blue;
+            position: relative;
+            position: fixed;
+            border-radius: 10px;
+            background-size: cover;
+        }
+
+        .malam {
+            border: 1px white solid;
+            width: 150px;
+            height: 50px;
+            right: 25px;
+            top: 10px;
+            background-color: yellow;
+            position: absolute;
+        }
+
+        .siang {
+            border: 1px white solid;
+            width: 150px;
+            height: 50px;
+            right: 25px;
+            top: 70px;
+            background-color: yellow;
+            position: absolute;
+            text-align: center;
+        }
+
+        .kotak {
+            border: 1px white solid;
+            width: 100px;
+            height: 100px;
+            bottom: 10px;
+            left: 20px;
+            background-color: greenyellow;
+            position: fixed;
+        }
+
+        .cobaevent {
+            border: 1px white solid;
+            width: 100px;
+            height: 100px;
+            left: 20px;
+            background-color: yellow;
+            bottom: 10px;
+            position: fixed;
+        }
+    </style>
+
+    <script>
+        function ubahwarna_dark() {
+            document.getElementById('konten').style.backgroundColor = "black";
+            document.getElementById('konten').style.color = "white";
+            document.getElementById('konten').style.border = "5px solid grey"
+        }
+
+        function ubahwarna_light() {
+            document.getElementById('konten').style.backgroundColor = "pink";
+            document.getElementById('konten').style.color = "black";
+        }
+
+        function divkelakuan() {
+            document.getElementById('cobaeventku').className = "cobaevent";
+        }
+
+        function divkelakuan1() {
+            document.getElementById('cobaeventku').className = "kotak";
+        }
+    </script>
+</head>
+
+<body>
+
+    <div class="mode">
+
+        <center>
+            <button type="button" onclick="ubahwarna_dark()" class="malam">
+                <p>Mode Malam Hari</p>
+            </button>
+
+            <button type="button" onclick="ubahwarna_light()" class="siang">
+                <p> Mode Siang Hari</p>
+            </button>
+        </center>
+
+    </div>
+    </div>
+
+    <div class="kotak" id="cobaeventku" onmouseup="divkelakuan()" onmousedown="divkelakuan1()">
+
+    </div>
+
+    <div class="container">
+        <div class="ribbon"></div>
+        <div class="judul">
+            <h1>My Website</h1>
+        </div>
+        <div class="layarkaca"></div>
+        <div class="menu">
+            <a href="#">Home</a>
+            <a href="#">Profil</a>
+            <a href="#">Contact</a>
+        </div>
+        <div class="banner">
+
+        </div>
+        <div class="judulartikel">
+            <h1>Judul ARTIKEL</h1>
+            <P>Oleh : Mohammad Egi Setyo N</P>
+        </div>
+        <div class="konten">
+            <img src="img/logoUB.jfif">
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Incidunt, nulla pariatur. Totam, illum nemo.
+                Vel quis voluptate ad! Nihil, voluptate fuga necessitatibus reprehenderit soluta dicta velit aliquam
+                totam ea aliquid.</p><br>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto vitae sapiente iure error rem consequuntur
+                aspernatur veritatis, corporis ipsum ut reprehenderit vero quibusdam facilis, pariatur in impedit
+                repellat veniam fuga.</p><br>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo eos cupiditate quod eum quis maiores aperiam
+                dolores iure, necessitatibus blanditiis, numquam repellat eius nisi odio tenetur accusamus porro? Ab,
+                ipsa!</p><br>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Provident, autem! Suscipit iusto atque vero,
+                soluta et quisquam accusamus sunt itaque, tempora, exercitationem vel officiis delectus veniam ea ab
+                inventore quos.</p><br>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima velit perspiciatis quibusdam culpa
+                exercitationem deleniti voluptate non esse ipsum cum magnam pariatur molestiae iusto aut voluptates,
+                corporis reprehenderit dolore odio.</p><br>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos omnis, qui temporibus autem nihil quis quo
+                molestiae animi beatae! Cumque velit asperiores accusamus deleniti facere. Repellat dolore nulla quaerat
+                quasi?</p><br>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Enim commodi dolore libero modi, provident
+                aperiam ullam error necessitatibus dicta nulla quibusdam, distinctio cumque officiis voluptatem maxime
+                accusantium esse vero earum.</p><br>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Velit veritatis beatae similique magni
+                accusamus hic, cum laborum repellendus quas inventore quo quidem. Obcaecati, eligendi? Excepturi maxime
+                ab quisquam suscipit accusantium?</p>
+        </div>
+        <div class="galery">
+
+        </div>
+        <div class="galery">
+
+        </div>
+        <div class="galery">
+
+        </div>
+        <div class="galery">
+
+        </div>
+        <div class="galery">
+
+        </div>
+        <div class="galery">
+
+        </div>
+        <div class="galery">
+
+        </div>
+        <div class="galery">
+
+        </div>
+
+        <div class="footer">
+            <p class="copyright">Copyright 2020</p>
+        </div>
+    </div>
+</body>
+
+</html>

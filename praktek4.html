@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .container {
+            border: 1px solid black;
+            height: 400px;
+            width: 500px;
+            background-color: blue;
+            background-size: cover;
+        }
+
+        .main {
+            border: 1px solid black;
+            height: 110px;
+            width: 500px;
+            background-color: se;
+        }
+
+        .galery1 {
+            border: 2px solid yellow;
+            width: 110px;
+            height: 90px;
+            margin: 5px 5px 5px 5px;
+            float: left;
+            background-image: url("img/p1.jfif");
+            background-size: cover;
+        }
+
+        .gal1 {
+            background-image: url("img/p1.jfif");
+            background-size: 200%;
+            margin-left: 500px;
+        }
+
+        .galery2 {
+            border: 2px solid black;
+            width: 110px;
+            height: 90px;
+            margin: 5px 5px 5px 5px;
+            float: left;
+            background-image: url("img/p2.jfif");
+            background-size: cover;
+        }
+
+        .galery3 {
+            border: 2px solid yellow;
+            width: 110px;
+            height: 90px;
+            margin: 5px 5px 5px 5px;
+            float: left;
+            background-image: url("img/p3.jfif");
+            background-size: cover;
+        }
+
+        .galery4 {
+            border: 2px solid black;
+            width: 110px;
+            height: 90px;
+            margin: 5px 5px 5px 5px;
+            float: left;
+            background-image: url("img/p4.jfif");
+            background-size: cover;
+        }
+    </style>
+    <script>
+        function openGal1() {
+            document.getElementById("con1").style.backgroundImage = "url(img/p1.jfif)";
+        }
+
+        function openGal2() {
+            document.getElementById("con1").style.backgroundImage = "url(img/p2.jfif)";
+        }
+
+        function openGal3() {
+            document.getElementById("con1").style.backgroundImage = "url(img/p3.jfif)";
+        }
+
+        function openGal4() {
+            document.getElementById("con1").style.backgroundImage = "url(img/p4.jfif)";
+        }
+    </script>
+</head>
+
+<body>
+    <div id="con1" class="container">
+
+    </div>
+    <div class="main">
+        <div id="gal1" class="galery1" onclick="openGal1()">
+
+        </div>
+        <div class="galery2" onclick="openGal2()">
+
+        </div>
+        <div class="galery3" onclick="openGal3()">
+
+        </div>
+        <div class="galery4" onclick="openGal4()">
+
+        </div>
+    </div>
+</body>
+
+</html>
