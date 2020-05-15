@@ -7,6 +7,7 @@
     <title>VokasiPedia</title>
 
     <script src="vue/vue.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <style>
         .header {
             height: 50px;
@@ -192,33 +193,34 @@
         var vm = new Vue({
             el: '#container',
             data: {
-                motor: [{
-                    merek: 'Supra',
-                    harga: 5500000,
-                    image: 'https://cdn0-production-images-kly.akamaized.net/QbYVo9CS2CJxhhhFQJMnDmLQ4q4=/640x360/smart/filters:quality(75):strip_icc():format(jpeg)/kly-media-production/medias/2747152/original/088219600_1552155797-AHM_Honda_Supra_X_125_FI._06_.jpg'
-                }, {
-                    merek: 'Mio',
-                    harga: 3400000,
-                    image: 'https://d2pa5gi5n2e1an.cloudfront.net/global/images/product/motorcycle/Yamaha_Mio/Yamaha_Mio_L_1.jpg'
-                }, {
-                    merek: 'NMax',
-                    harga: 2500000,
-                    image: 'https://d2pa5gi5n2e1an.cloudfront.net/global/images/product/motorcycle/Yamaha_NMAX_2018/Yamaha_NMAX_2018_L_1.jpg'
-                }, {
-                    merek: 'Shogun',
-                    harga: 3400000,
-                    image: 'https://d2pa5gi5n2e1an.cloudfront.net/webp/global/images/product/motorcycle/Suzuki_Shogun_Axelo125/Suzuki_Shogun_Axelo125_L_1.jpg'
-                }, {
-                    merek: 'Satria',
-                    harga: 1400000,
-                    image: 'https://www.suzuki.co.id//assets/static/img/variant/Satria-WhiteBlue.png'
-                }],
+                // motor: [{
+                //     merek: 'Supra',
+                //     harga: 5500000,
+                //     image: 'img/supra.jpg'
+                // }, {
+                //     merek: 'Mio',
+                //     harga: 3400000,
+                //     image: 'img/mio.jpg'
+                // }, {
+                //     merek: 'NMax',
+                //     harga: 2500000,
+                //     image: 'img/nmax.jpg'
+                // }, {
+                //     merek: 'Shogun',
+                //     harga: 3400000,
+                //     image: 'img/shogun.jpg'
+                // }, {
+                //     merek: 'Satria',
+                //     harga: 1400000,
+                //     image: 'img/satria.jpg'
+                // }],
+                motor: [],
                 keranjangimage: [],
                 keranjangmerek: [],
                 keranjangharga: [],
 
                 qty: 0,
-                keterangan: true
+                // keterangan: true
 
             },
 
@@ -242,6 +244,17 @@
                     this.keranjangmerek.splice(index, 1)
                     this.keranjangharga.splice(index, 1)
                     this.qty -= 1;
+                },
+                upDate: function () {
+                    axios.get('http://my-json-server.typicode.com/megi14/restapiserver/db').then(response =>
+                        this.motor = response.data['produk'])
+                },
+                mounted() {
+                    this.upDate();
+                    this.timer = setInterval(this.upDate, 1000)
+
+                    // axios.get('http://my-json-server.typicode.com/megi14/restapiserver/db').then(response =>
+                    //     this.motor = response.data['produk'])
                 }
             }
         })
